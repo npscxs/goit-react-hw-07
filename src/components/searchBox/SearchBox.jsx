@@ -6,14 +6,14 @@ export default function SearchBox() {
   const filterValue = useSelector((state) => state.filters.name);
   const dispatch = useDispatch();
 
-  const handleChange = (e) => {
-    const value = e.target.value.trim();
+  const handleChange = (el) => {
+    const value = el.target.value.trim();
     value !== filterValue && dispatch(changeFilter(value));
   };
 
   return (
     <div>
-      <p>Search contact:</p>
+      <p>Search contact by name:</p>
       <input
         className={styles.searchInput}
         type="text"

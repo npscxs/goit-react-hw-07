@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { nanoid } from "nanoid";
+
 import { object, string } from "yup";
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/contactsOps";
 import styles from "./ContactForm.module.css";
 
 const NewUserShema = object().shape({
@@ -23,8 +23,7 @@ export default function ContactForm() {
     if (data.name.trim() === "" || data.number.trim() === "") {
       return;
     }
-    const newUser = { ...data, id: nanoid().toLowerCase() };
-    dispatch(addContact(newUser));
+    dispatch(addContact(data));
     action.resetForm();
   };
 
